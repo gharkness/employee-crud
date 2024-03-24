@@ -1,0 +1,11 @@
+services:
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: employee_directory
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_USER: springstudent
+      MYSQL_PASSWORD: springstudent
+    ports:
+      - 3306:3306
