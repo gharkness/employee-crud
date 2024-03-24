@@ -1,6 +1,5 @@
 CREATE DATABASE  IF NOT EXISTS `employee_directory`;
 USE `employee_directory`;
-
 --
 -- Table structure for table `employee`
 --
@@ -25,8 +24,4 @@ INSERT INTO `employee` VALUES
 	(3,'Avani','Gupta','avani@luv2code.com'),
 	(4,'Yuri','Petrov','yuri@luv2code.com'),
 	(5,'Juan','Vega','juan@luv2code.com');
-
-CREATE USER 'springstudent'@'%' IDENTIFIED BY 'springstudent';
-GRANT ALL PRIVILEGES ON *.* TO 'springstudent'@'%' WITH GRANT OPTION;
-FLUSH PRIVILEGES;
 
