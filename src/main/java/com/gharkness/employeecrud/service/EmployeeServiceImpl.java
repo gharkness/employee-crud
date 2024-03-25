@@ -1,40 +1,46 @@
 package com.gharkness.employeecrud.service;
 
-import com.gharkness.employeecrud.dao.EmployeeDAO;
+import com.gharkness.employeecrud.dao.EmployeeRepository;
 import com.gharkness.employeecrud.entity.Employee;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private EmployeeDAO employeeDAO;
+    private EmployeeRepository employeeRepository;
 
-    @Transactional
     @Override
     public List<Employee> findAll() {
-        return employeeDAO.findAll();
+        return employeeRepository.findAll();
     }
 
-    @Transactional
     @Override
     public Employee findById(int id) {
-        return employeeDAO.findById(id);
+        Optional<Employee> result = employeeRepository.findById(id);
+
+        Employee employee = null;
+        if (result.isPresent()) {
+            employee = result.get();
+        } else {
+            throw new RuntimeException("Did not find employee id - " + id);
+        }
+
+        return employee;
     }
 
-    @Transactional
     @Override
     public Employee save(Employee employee) {
-        return employeeDAO.save(employee);
+        return employeeRepository.save(employee);
     }
 
-    @Transactional
     @Override
     public void deleteById(int id) {
-        employeeDAO.deleteById(id);
+        employeeRepository.deleteById(id);
     }
 }
