@@ -1,10 +1,10 @@
-package com.gharkness.employeecrud.dao;
+package com.gharkness.employeecrud.service;
 
 import com.gharkness.employeecrud.entity.Employee;
 
 import java.util.List;
 
-public interface EmployeeDAO {
+public interface EmployeeService {
     List<Employee> findAll();
 
     Employee findById(int id);
